@@ -5,5 +5,9 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon />
     <AssemblyName>KeySender</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="KeySender.Tests" />
+  </ItemGroup>
 </Project>
