@@ -232,14 +232,14 @@ public class KeySenderPanel : UserControl
 
         y += 35;
 
-        AddLabel("Cycle Interval (min):", 10, y);
+        AddLabel("Cycle Interval (sec):", 10, y);
         AddLabel("Key Delay (sec):", 200, y);
         y += 20;
         nudInterval.Location = new Point(10, y);
         nudInterval.Size = new Size(70, 24);
         nudInterval.Minimum = 1;
-        nudInterval.Maximum = 999;
-        nudInterval.Value = 5;
+        nudInterval.Maximum = 9999;
+        nudInterval.Value = 300;
         Controls.Add(nudInterval);
 
         nudDelay.Location = new Point(200, y);
@@ -433,10 +433,10 @@ public class KeySenderPanel : UserControl
         lblStatus.ForeColor = Color.Green;
         SetControlsEnabled(false);
 
-        var intervalMs = (int)(nudInterval.Value * 60 * 1000);
+        var intervalMs = (int)(nudInterval.Value * 1000);
         _timer = new System.Threading.Timer(_ => RunCycle(), null, 0, intervalMs);
 
-        Log($"Started — cycle every {nudInterval.Value} min");
+        Log($"Started — cycle every {nudInterval.Value} sec");
     }
 
     internal void Stop()
